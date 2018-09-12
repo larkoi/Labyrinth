@@ -17,11 +17,11 @@ void loop(){
   buttonState = digitalRead(buttonPin);
   if (buttonState == HIGH){
     digitalWrite(forwardPin, HIGH);
-    delay(3000);
+    delay(14190); //Säädetty tarkasti liikeradan mukaan. Oltava varovainen näiden kanssa ettei revi mekaniikkaa
     digitalWrite(forwardPin, LOW);
-    delay(5000);
+    delay(4000);
     digitalWrite(backPin, HIGH);
-    delay(3000);
+    delay(11575); //Säädetty tarkasti liikeradan mukaan. Oltava varovainen näiden kanssa ettei revi mekaniikkaa
     digitalWrite(backPin, LOW);
     while (digitalRead(buttonPin))delay(1); //odotetaan että nappi ei ole enää pohjassa, ennen kuin jatketaan eteenpäin
   }
