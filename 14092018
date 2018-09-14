@@ -1,0 +1,36 @@
+ //Labyrinth koodi, Robot Uprising 2018, L.K. & P.Y.
+int buttonPin = 2; //Painike jolla labyrintti liikkuu
+int buttonState = 0; //Painikkeen alkutila
+
+int forwardPin =  5; //Lineaarimoottori eteen
+int backPin =  6; //Lineaarimoottori taakse
+
+void setup() {
+
+pinMode(forwardPin, OUTPUT);
+pinMode(backPin, OUTPUT);
+pinMode(buttonPin, INPUT_PULLUP); //Vastus
+
+Serial.begin(9600); 
+
+}
+
+void loop(){
+
+  buttonState = digitalRead(buttonPin);
+  if (buttonState == LOW){ //Nappi on pohjassa LOW asennossa, koska INPUT_PULLUP
+   
+    digitalWrite(forwardPin, HIGH);
+    delay(14190);
+    digitalWrite(forwardPin, LOW);
+    delay(4000);
+    digitalWrite(backPin, HIGH);
+    delay(11575);
+    digitalWrite(backPin, LOW);
+    while (digitalRead(buttonPin))delay(1); //odotetaan että nappi ei ole enää pohjassa, ennen kuin jatketaan eteenpäin
+  }
+  else{
+    digitalWrite(forwardPin, LOW);
+    digitalWrite(backPin, LOW);
+  }
+}
